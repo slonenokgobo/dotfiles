@@ -1,0 +1,17 @@
+export EDITOR="vim"
+export OOO_FORCE_DESKTOP=gnome
+export JAVA_HOME=$HOME/Downloads/jdk
+export PATH=$JAVA_HOME/bin:$PATH
+
+export GIT_EDITOR="vim"
+
+# export CUPS_SERVER=cups-sop.inria.fr
+# export ALTERNATE_EDITOR=""
+# export MAIL=~/mail/inbox
+# export LD_LIBRARY_PATH=/usr/local/lib
+# export PATH=/home/solka/bin:$PATH
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# export LC_CTYPE=ru_RU.UTF-8
+# export AWT_TOOLKIT=MToolkit
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
