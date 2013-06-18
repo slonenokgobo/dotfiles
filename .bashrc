@@ -93,6 +93,7 @@ alias gc="git commit"
 alias gb="git branch"
 alias gl="git log"
 alias gd="git diff"
+alias cd="cd_pattern"
 
 ff () {
     WHERE=${2-.}
@@ -101,6 +102,22 @@ ff () {
 rg () {
     WHERE=${2-.}
     grep -r "$1" $WHERE
+}
+
+cd_pattern () {
+	if [ -d "$1" -o -z "$1" -o "$1" = "-" ]; then
+		builtin cd $1
+		return
+	fi
+
+	local DIR=`cat ~/history | awk '{print($9)}' | grep -i $1 | tail -n 1`
+	OLD_DIR=$DIR
+	while grep "$1" <(echo $DIR) &> /dev/null; do
+		OLD_DIR=$DIR
+		DIR=$(dirname $DIR)
+	done
+	builtin cd $OLD_DIR
+
 }
 
 export GPG_TTY=`tty`
@@ -149,3 +166,6 @@ function ta {
 function rsync_mirror {
     rsync -avzP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/osmirnov/.gvm/bin/gvm-init.sh" ]] && source "/home/osmirnov/.gvm/bin/gvm-init.sh"
