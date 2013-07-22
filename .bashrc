@@ -167,5 +167,9 @@ function rsync_mirror {
     rsync -avzP --inplace -e 'ssh -o ClearAllForwardings=yes' "$@"
 }
 
+json() {
+    cat $1 | python -mjson.tool | less
+}
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/home/osmirnov/.gvm/bin/gvm-init.sh" ]] && source "/home/osmirnov/.gvm/bin/gvm-init.sh"
